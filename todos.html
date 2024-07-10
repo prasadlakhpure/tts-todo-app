@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Todo List</h1>
+    <ul>
+
+    </ul>
+
+    <button onclick="addTodo()">Add Todo</button>
+
+    <script>
+        // function addTodo(){
+        //     var todo=window.prompt("Enter the Todo");
+        //     var li=document.createElement('li');
+        //     li.innerHTML=todo;
+        //     document.querySelector('ul').appendChild(li);
+
+        // }
+
+        var todos = [];
+
+        //    Add Todo
+
+        function addTodo() {
+            var todo = window.prompt('Enter the todo');
+            todos.push(todo);
+            console.log(todos);
+            showTodos();
+        }
+        // show todos
+
+        function showTodos() {
+            document.querySelector('ul').innerHTML = "";
+            todos.forEach((val, i) => {
+                document.querySelector("ul").
+                    innerHTML += `<li>${val} <button onclick="deleteTodo(${i})">Delete</button>
+                                         <button onclick=update(${i})> Update</button> </li>`;
+
+                console.log(i);
+            });
+        }
+
+        //  delete todos
+        function deleteTodo(i) {
+            alert(i);
+            delete todos[i];
+            console.log(todos);
+            showTodos();
+        }
+
+        // Updates todo
+        function update(i) {
+            let todo = prompt("Enter update Todos")
+            todos[i] = todo
+            showTodos();
+
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
